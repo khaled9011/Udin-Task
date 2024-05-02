@@ -4,8 +4,8 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
   Post,
+  Put,
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Product } from './product.model';
@@ -29,7 +29,7 @@ export class ProductController {
     return this.productService.findOne(id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   async update(
     @Param('id') id: string,
     @Body() product: Product,
