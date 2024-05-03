@@ -9,13 +9,14 @@ import {
 } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { Product } from './product.model';
+import { ProductDTO } from './product.dto';
 
 @Controller('products')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  async create(@Body() product: Product): Promise<Product> {
+  async create(@Body() product: ProductDTO): Promise<Product> {
     return this.productService.create(product);
   }
 
@@ -32,7 +33,7 @@ export class ProductController {
   @Put(':id')
   async update(
     @Param('id') id: string,
-    @Body() product: Product,
+    @Body() product: ProductDTO,
   ): Promise<Product> {
     return this.productService.update(id, product);
   }
