@@ -16,20 +16,18 @@ export class ProductService {
   }
 
   async findAll(): Promise<Product[]> {
-    return this.productModel.find().exec();
+    return this.productModel.find();
   }
 
   async findOne(id: string): Promise<Product> {
-    return this.productModel.findById(id).exec();
+    return this.productModel.findById(id);
   }
 
   async update(id: string, product: ProductDTO): Promise<Product> {
-    return this.productModel
-      .findByIdAndUpdate(id, product, { new: true })
-      .exec();
+    return this.productModel.findByIdAndUpdate(id, product, { new: true });
   }
 
   async remove(id: string): Promise<Product> {
-    return this.productModel.findByIdAndDelete(id).exec();
+    return this.productModel.findByIdAndDelete(id);
   }
 }

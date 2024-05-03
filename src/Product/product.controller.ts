@@ -22,12 +22,12 @@ export class ProductController {
 
   @Get()
   async findAll(): Promise<Product[]> {
-    return this.productService.findAll();
+    return await this.productService.findAll();
   }
 
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Product> {
-    return this.productService.findOne(id);
+    return await this.productService.findOne(id);
   }
 
   @Put(':id')
@@ -35,11 +35,11 @@ export class ProductController {
     @Param('id') id: string,
     @Body() product: ProductDTO,
   ): Promise<Product> {
-    return this.productService.update(id, product);
+    return await this.productService.update(id, product);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string): Promise<Product> {
-    return this.productService.remove(id);
+    return await this.productService.remove(id);
   }
 }
